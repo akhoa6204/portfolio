@@ -141,7 +141,7 @@ export default function Contact() {
 
         <Grid size={{ xs: 12, md: 6 }}>
           <Paper variant="outlined" sx={{ p: 3 }}>
-            <Box component="form" onSubmit={handleSubmit} noValidate>
+            <Box component="form" onSubmit={handleSubmit}>
               {fields.map((field) => (
                 <TextField
                   key={field.name}

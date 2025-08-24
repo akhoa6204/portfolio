@@ -5,14 +5,17 @@ const Introduce = () => {
   return (
     <Container sx={{ my: 3 }} id="introduce">
       <Stack
-        direction={{ xs: "column", md: "row" }}
+        direction={{ xs: "column", sm: "row" }}
         justifyContent="center"
         alignItems="center"
         spacing={2}
       >
         <Avatar
           src={IcAvatar}
-          sx={{ width: { xs: 150, md: 250 }, height: { xs: 150, md: 250 } }}
+          sx={{
+            width: { xs: 150, sm: 180, lg: 200 },
+            height: { xs: 150, sm: 180, lg: 200 },
+          }}
         />
         <Stack spacing={1}>
           <Typography

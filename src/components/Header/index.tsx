@@ -17,7 +17,7 @@ const socialInfo = [
     label: "facebook",
     component: (
       <FacebookIcon
-        sx={{ width: { xs: 32, md: 40 }, height: { xs: 32, md: 40 } }}
+        sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 } }}
       />
     ),
     link: "https://www.facebook.com/4nhkh04/",
@@ -27,7 +27,7 @@ const socialInfo = [
     label: "github",
     component: (
       <GitHubIcon
-        sx={{ width: { xs: 32, md: 40 }, height: { xs: 32, md: 40 } }}
+        sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 } }}
       />
     ),
     link: "https://github.com/akhoa6204",
@@ -37,7 +37,7 @@ const socialInfo = [
     label: "instagram",
     component: (
       <InstagramIcon
-        sx={{ width: { xs: 32, md: 40 }, height: { xs: 32, md: 40 } }}
+        sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 } }}
       />
     ),
     link: "https://www.instagram.com/akhoa_/",
@@ -57,7 +57,7 @@ const Header = () => {
     <AppBar
       position="sticky"
       elevation={0}
-      sx={{ pt: { xs: 7, md: 2 }, bgcolor: "#0f172a", zIndex: 999 }}
+      sx={{ bgcolor: "#0f172a", zIndex: 999 }}
     >
       <Toolbar disableGutters>
         <Container>
@@ -92,7 +92,7 @@ const Header = () => {
                 component="a"
                 href="#introduce"
                 sx={{
-                  fontSize: { xs: 26, md: 36 },
+                  fontSize: { xs: 20, md: 24 },
                   cursor: "pointer",
                   p: 0,
                   color: "white",
@@ -107,7 +107,7 @@ const Header = () => {
               direction="row"
               sx={{
                 order: { xs: 2, md: 1 },
-                justifyContent: { xs: "space-between", md: "center" },
+                justifyContent: 'center',
               }}
               spacing={1}
               flex={1}
@@ -115,7 +115,7 @@ const Header = () => {
               {navLinks.map((item) => (
                 <Button
                   key={item.label}
-                  sx={{ color: "white", fontSize: { xs: 14, sm: 24 } }}
+                  sx={{ color: "white", fontSize: { xs: 14, sm: 16 } }}
                   href={`#${item.path}`}
                   component="a"
                 >
@@ -128,8 +128,8 @@ const Header = () => {
               direction="row"
               spacing={1}
               sx={{
-                order: { xs: 1, md: 2 },
-                display: { xs: "flex", sm: "none", lg: "flex" },
+                order: { xs: 1, sm: 2 },
+                display: { xs: "flex", sm: "none", md: "flex" },
               }}
             >
               {socialInfo.map((item) => (

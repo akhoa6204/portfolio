@@ -102,7 +102,7 @@ export default function Contact() {
   return (
     <Container id="contact" sx={{ mb: 3 }}>
       <Typography variant="h5" fontWeight={700} sx={{ mb: 3 }}>
-        Contact
+        Contact me
       </Typography>
 
       <Grid container columnSpacing={2} rowSpacing={4}>

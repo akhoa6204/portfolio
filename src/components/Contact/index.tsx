@@ -111,9 +111,14 @@ export default function Contact() {
             variant="h5"
             sx={{
               mb: 2,
-              color: "#a855f7",
               textTransform: "capitalize",
               fontWeight: 700,
+              background: "var(--gradient)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+              WebkitTextFillColor: "transparent",
+              width: "fit-content",
             }}
           >
             Let's talk
@@ -140,8 +145,15 @@ export default function Contact() {
         </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
-          <Paper variant="outlined" sx={{ p: 3 }}>
-            <Box component="form" onSubmit={handleSubmit}>
+          <Paper
+            variant="outlined"
+            sx={{ background: "var(--gradient)", overflow: "hidden", p: 0.1 }}
+          >
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              sx={{ background: "#111827", p: 2, borderRadius: 1 }}
+            >
               {fields.map((field) => (
                 <TextField
                   key={field.name}
@@ -165,6 +177,7 @@ export default function Contact() {
                   }}
                 />
               ))}
+
               <Stack direction="row" justifyContent="center">
                 <Button
                   type="submit"

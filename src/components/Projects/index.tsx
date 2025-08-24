@@ -31,7 +31,7 @@ export const Projects = () => {
       </Typography>
       <Grid container spacing={2}>
         {projects.map((project) => (
-          <Grid size={{ xs: 12, md: 4 }}>
+          <Grid size={{ xs: 12, sm: 6, lg: 4 }}>
             <CardProject
               key={project.id}
               name={project.name}

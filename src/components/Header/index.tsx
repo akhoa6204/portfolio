@@ -15,31 +15,19 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 const socialInfo = [
   {
     label: "facebook",
-    component: (
-      <FacebookIcon
-        sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 } }}
-      />
-    ),
+    component: <FacebookIcon />,
     link: "https://www.facebook.com/4nhkh04/",
     color: "#1877F2",
   },
   {
     label: "github",
-    component: (
-      <GitHubIcon
-        sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 } }}
-      />
-    ),
+    component: <GitHubIcon />,
     link: "https://github.com/akhoa6204",
-    color: "#9ca3af",
+    color: "#333",
   },
   {
     label: "instagram",
-    component: (
-      <InstagramIcon
-        sx={{ width: { xs: 28, md: 32 }, height: { xs: 28, md: 32 } }}
-      />
-    ),
+    component: <InstagramIcon />,
     link: "https://www.instagram.com/akhoa_/",
     color: "#E4405F",
   },
@@ -56,8 +44,8 @@ const Header = () => {
   return (
     <AppBar
       position="sticky"
-      elevation={0}
-      sx={{ bgcolor: "#0f172a", zIndex: 999 }}
+      elevation={1}
+      sx={{ bgcolor: "#0f172a", zIndex: 999, py: 1 }}
     >
       <Toolbar disableGutters>
         <Container>
@@ -107,7 +95,7 @@ const Header = () => {
               direction="row"
               sx={{
                 order: { xs: 2, md: 1 },
-                justifyContent: 'center',
+                justifyContent: "center",
               }}
               spacing={1}
               flex={1}
@@ -144,7 +132,18 @@ const Header = () => {
                     component="a"
                     href={item.link}
                     target="_blank"
-                    sx={{ "&:hover": { color: item.color } }}
+                    sx={{
+                      backgroundColor: item.color,
+                      color: "#fff",
+                      width: 40,
+                      height: 40,
+                      "& .MuiSvgIcon-root": {
+                        fontSize: 24,
+                      },
+                      "&:hover": {
+                        opacity: 0.9,
+                      },
+                    }}
                   >
                     {item.component}
                   </IconButton>

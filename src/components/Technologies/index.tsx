@@ -7,16 +7,32 @@ import {
   Typography,
 } from "@mui/material";
 const skills = [
-  { id: "htmlcss", name: "HTML/CSS", level: "Intermediate", percent: 65 },
-  { id: "ts", name: "TypeScript", level: "Beginner", percent: 45 },
-  { id: "react", name: "ReactJs", level: "Beginner", percent: 50 },
+  { id: "htmlcss", name: "HTML/CSS", level: "Intermediate", percent: 70 },
+  { id: "ts", name: "TypeScript", level: "Intermediate", percent: 65 },
+  { id: "react", name: "React.js", level: "Beginner", percent: 60 },
+  { id: "tailwind", name: "Tailwind CSS", level: "Beginner", percent: 55 },
+  { id: "mui", name: "MUI", level: "Beginner", percent: 50 },
 ];
+
 const additionalSkills = [
-  { id: "git", name: "Git" },
-  { id: "teamwork", name: "Teamwork" },
+  // Backend & Database
+  { id: "django", name: "Django" },
+  { id: "python", name: "Python" },
+  { id: "java", name: "Java" },
+  { id: "sqlserver", name: "SQL Server" },
+  { id: "sqlite", name: "SQLite" },
+
+  // Tools & Platforms
+  { id: "git", name: "Git/GitHub" },
   { id: "postman", name: "Postman" },
-  { id: "b2english", name: "B2 English" },
-  { id: "basicbackend", name: "Basic backend" },
+  { id: "vscode", name: "VSCode" },
+
+  // Others
+  { id: "restapi", name: "RESTful API Design" },
+  { id: "oop", name: "OOP" },
+  { id: "ml", name: "Machine Learning" },
+  { id: "crawling", name: "Web Crawling" },
+  { id: "testauto", name: "Test Automation" },
 ];
 
 const Technologies = () => {
@@ -53,7 +69,7 @@ const Technologies = () => {
       </Typography>
       <Grid container spacing={2}>
         {additionalSkills.map((s) => (
-          <Grid key={s.id} size={6}>
+          <Grid key={s.id} size={{ xs: 6, sm: 4, lg: 3 }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               <Box
                 sx={{

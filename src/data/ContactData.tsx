@@ -6,17 +6,17 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 export const contactInfos: IContactInfo[] = [
   {
     id: "email",
-    icon: <EmailIcon sx={{ color: "#a855f7" }} />,
+    icon: <EmailIcon sx={{ color: "#13ADC7" }} />,
     name: "khoaanh662004@gmail.com",
   },
   {
     id: "phone",
-    icon: <PhoneIcon sx={{ color: "#a855f7" }} />,
+    icon: <PhoneIcon sx={{ color: "#13ADC7" }} />,
     name: "(84+) 562602721",
   },
   {
     id: "address",
-    icon: <LocationOnIcon sx={{ color: "#a855f7" }} />,
+    icon: <LocationOnIcon sx={{ color: "#13ADC7" }} />,
     name: "Hai Chau, Da Nang, VietNam",
   },
 ];

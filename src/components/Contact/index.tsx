@@ -10,11 +10,9 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { contactInfos } from "../../data";
 
 interface FormData {
   title: string;
@@ -30,18 +28,6 @@ const fields = [
   { name: "email", type: "email", label: "Email", autoComplete: "email" },
   { name: "title", type: "text", label: "Title" },
   { name: "message", type: "area", label: "Message" },
-];
-
-const infos = [
-  {
-    icon: <EmailIcon sx={{ color: "#a855f7" }} />,
-    name: "khoaanh662004@gmail.com",
-  },
-  { icon: <PhoneIcon sx={{ color: "#a855f7" }} />, name: "(84+) 562602721" },
-  {
-    icon: <LocationOnIcon sx={{ color: "#a855f7" }} />,
-    name: "Hai Chau, Da Nang, VietNam",
-  },
 ];
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
@@ -130,7 +116,7 @@ export default function Contact() {
             I'm open to discussing web development projects or partnership
             opportunities.
           </Typography>
-          {infos.map((info, idx) => (
+          {contactInfos.map((info, idx) => (
             <Stack
               key={idx}
               direction="row"

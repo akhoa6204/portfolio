@@ -1,31 +1,5 @@
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import { Box, Container, IconButton, Stack, Typography } from "@mui/material";
-
-const socialInfo = [
-  {
-    label: "facebook",
-    component: <FacebookIcon />,
-    link: "https://www.facebook.com/4nhkh04/",
-    color: "#1877F2",
-    iconColor: "#fff",
-  },
-  {
-    label: "github",
-    component: <GitHubIcon />,
-    link: "https://github.com/akhoa6204",
-    color: "#333",
-    iconColor: "#fff",
-  },
-  {
-    label: "instagram",
-    component: <InstagramIcon />,
-    link: "https://www.instagram.com/akhoa_/",
-    color: "#E4405F",
-    iconColor: "#fff",
-  },
-];
+import { socials } from "../../data";
 
 const Footer = () => {
   return (
@@ -52,7 +26,7 @@ const Footer = () => {
         <Box sx={{ flex: 1, height: 2, bgcolor: "white", opacity: 0.5 }} />
 
         <Stack direction="row" spacing={2}>
-          {socialInfo.map((s) => (
+          {socials.map((s) => (
             <IconButton
               key={s.label}
               component="a"

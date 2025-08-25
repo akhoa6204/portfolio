@@ -1,5 +1,5 @@
 import { Avatar, Button, Container, Stack, Typography } from "@mui/material";
-import { IcAvatar } from "../../assets/images";
+import { resume } from "../../data";
 
 const Introduce = () => {
   return (
@@ -11,7 +11,7 @@ const Introduce = () => {
         spacing={2}
       >
         <Avatar
-          src={IcAvatar}
+          src={resume.avatar}
           sx={{
             width: { xs: 150, sm: 180, lg: 200 },
             height: { xs: 150, sm: 180, lg: 200 },
@@ -41,8 +41,8 @@ const Introduce = () => {
           </Typography>
           <Button
             component="a"
-            href={"/AnhKhoa_CV.pdf"}
-            download={"AnhKhoa_CV.pdf"}
+            href={resume.href}
+            download={resume.download}
             sx={{
               background: "var(--gradient)",
               width: "fit-content",

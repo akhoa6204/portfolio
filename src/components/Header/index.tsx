@@ -8,37 +8,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import InstagramIcon from "@mui/icons-material/Instagram";
-
-const socialInfo = [
-  {
-    label: "facebook",
-    component: <FacebookIcon />,
-    link: "https://www.facebook.com/4nhkh04/",
-    color: "#1877F2",
-  },
-  {
-    label: "github",
-    component: <GitHubIcon />,
-    link: "https://github.com/akhoa6204",
-    color: "#333",
-  },
-  {
-    label: "instagram",
-    component: <InstagramIcon />,
-    link: "https://www.instagram.com/akhoa_/",
-    color: "#E4405F",
-  },
-];
-
-const navLinks = [
-  { label: "About", path: "about" },
-  { label: "Technologies", path: "technologies" },
-  { label: "Projects", path: "projects" },
-  { label: "contact", path: "contact" },
-];
+import { navLinks, socials } from "../../data";
 
 const Header = () => {
   return (
@@ -120,7 +90,7 @@ const Header = () => {
                 display: { xs: "flex", sm: "none", md: "flex" },
               }}
             >
-              {socialInfo.map((item) => (
+              {socials.map((item) => (
                 <Tooltip
                   title={item.label}
                   arrow

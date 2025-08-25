@@ -21,7 +21,7 @@ const Introduce = () => {
         />
         <Stack spacing={1}>
           <TypographyComponent variant="h4">
-            Hello, I'm Anh khoa
+            Hello, I'm Anh Khoa
           </TypographyComponent>
 
           <Typography variant="h5" fontWeight={600}>
@@ -29,7 +29,8 @@ const Introduce = () => {
           </Typography>
 
           <Typography variant="body1">
-            Focused on building clean, user-centered web applications.
+            Frontend Developer passionate about crafting clean, responsive, and
+            user-focused web applications.
           </Typography>
           <ButtonComponent
             component="a"

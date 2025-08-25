@@ -34,7 +34,7 @@ const Introduce = () => {
           <ButtonComponent
             component="a"
             href={resume.href}
-            download={resume.download}
+            {...{ download: resume.download }}
           >
             Download CV
           </ButtonComponent>

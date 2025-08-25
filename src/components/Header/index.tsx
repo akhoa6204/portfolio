@@ -35,8 +35,8 @@ const socialInfo = [
 
 const navLinks = [
   { label: "About", path: "about" },
-  { label: "Projects", path: "projects" },
   { label: "Technologies", path: "technologies" },
+  { label: "Projects", path: "projects" },
   { label: "contact", path: "contact" },
 ];
 
@@ -45,7 +45,7 @@ const Header = () => {
     <AppBar
       position="sticky"
       elevation={1}
-      sx={{ bgcolor: "#0f172a", zIndex: 999, py: 1 }}
+      sx={{ bgcolor: "#0f172a", zIndex: 999 }}
     >
       <Toolbar disableGutters>
         <Container>

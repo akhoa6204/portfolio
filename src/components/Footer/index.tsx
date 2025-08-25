@@ -41,7 +41,7 @@ const Footer = () => {
           mb: 1,
         }}
       >
-        Always open to new opportunities
+        Open to opportunities, ready for the next step.
       </Typography>
       <Stack
         direction="row"

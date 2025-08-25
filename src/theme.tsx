@@ -29,7 +29,9 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         ":root": {
-          "--gradient": "linear-gradient(90deg, #a855f7, #3b82f6)",
+          "--gradient": "linear-gradient(90deg, #13ADC7, #6978D1, #945DD6)",
+          "--hover-gradient":
+            "linear-gradient(90deg, #31CBE5, #8796EF, #B27BF4)",
         },
       },
     },

@@ -1,57 +1,87 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-  Snackbar,
-  Alert,
-} from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { contactInfos } from "../../data";
+import HeadingSection from "../HeadingSection";
+import ToastModal from "./ToastModal";
+import ContactInfo from "./ContactInfo";
+import ContactForm from "./ContactForm";
 
-interface FormData {
+export interface FormData {
   title: string;
   name: string;
   email: string;
   message: string;
 }
+interface StateToast {
+  open: boolean;
+  status?: boolean;
+  message?: string;
+}
+type FieldName = keyof FormData;
+export type Errors = Partial<FormData>;
+
+export interface Field {
+  id: FieldName;
+  name: FieldName;
+  type: "text" | "email" | "area";
+  label: string;
+  autoComplete?: string;
+}
 
 const defaultData: FormData = { title: "", name: "", email: "", message: "" };
 
-const fields = [
-  { name: "name", type: "text", label: "Name", autoComplete: "name" },
-  { name: "email", type: "email", label: "Email", autoComplete: "email" },
-  { name: "title", type: "text", label: "Title" },
-  { name: "message", type: "area", label: "Message" },
+const fields: Field[] = [
+  {
+    id: "name",
+    name: "name",
+    type: "text",
+    label: "Name",
+    autoComplete: "name",
+  },
+  {
+    id: "email",
+    name: "email",
+    type: "email",
+    label: "Email",
+    autoComplete: "email",
+  },
+  { id: "title", name: "title", type: "text", label: "Title" },
+  { id: "message", name: "message", type: "area", label: "Message" },
 ];
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
+const validateForm = (formData: FormData): Errors => {
+  const errors: Errors = {};
+  if (formData.name.trim().length < 2)
+    errors.name = "Name must be at least 2 characters";
+  if (!/^\S+@\S+\.\S+$/.test(formData.email))
+    errors.email = "Invalid email address";
+  if (formData.title.trim().length < 10)
+    errors.title = "Title must be at least 10 characters";
+  if (formData.message.trim().length < 10)
+    errors.message = "Message must be at least 10 characters";
+  return errors;
+};
+
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>(defaultData);
-  const [isLoading, setIsLoading] = useState(false);
-  const [toast, setToast] = useState<{
-    open: boolean;
-    ok?: boolean;
-    msg?: string;
-  }>({ open: false });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [toast, setToast] = useState<StateToast>({ open: false });
+  const [errors, setErrors] = useState<Errors>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  ) => setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const result = validateForm(formData);
+    setErrors(result);
+    if (Object.keys(result).length > 0) return;
     setIsLoading(true);
     try {
       await emailjs.send(
@@ -69,138 +99,44 @@ export default function Contact() {
 
       setToast({
         open: true,
-        ok: true,
-        msg: "Message sent. I'll get back to you soon!",
+        status: true,
+        message: "Message sent. I'll get back to you soon!",
       });
       setFormData(defaultData);
     } catch (err) {
       console.error(err);
       setToast({
         open: true,
-        ok: false,
-        msg: "Failed to send. Please try again.",
+        status: false,
+        message: "Failed to send. Please try again.",
       });
     } finally {
       setIsLoading(false);
     }
   };
-
+  const handleCloseToast = () => setToast({ open: false });
   return (
     <Container id="contact" sx={{ mb: 3 }}>
-      <Typography variant="h5" fontWeight={700} sx={{ mb: 3 }}>
-        Contact me
-      </Typography>
+      <HeadingSection>Contact me</HeadingSection>
 
       <Grid container columnSpacing={2} rowSpacing={4}>
         <Grid size={{ xs: 12, md: 6 }}>
-          <Typography
-            variant="h5"
-            sx={{
-              mb: 2,
-              textTransform: "capitalize",
-              fontWeight: 700,
-              background: "var(--gradient)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-              width: "fit-content",
-            }}
-          >
-            Let's talk
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{ fontSize: 18, mb: 2, color: "white" }}
-          >
-            I'm open to discussing web development projects or partnership
-            opportunities.
-          </Typography>
-          {contactInfos.map((info, idx) => (
-            <Stack
-              key={idx}
-              direction="row"
-              spacing={1}
-              sx={{ mb: 2 }}
-              alignItems="center"
-            >
-              {info.icon}
-              <Typography>{info.name}</Typography>
-            </Stack>
-          ))}
+          <ContactInfo contactInfos={contactInfos} />
         </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
-          <Paper
-            variant="outlined"
-            sx={{ background: "var(--gradient)", overflow: "hidden", p: 0.1 }}
-          >
-            <Box
-              component="form"
-              onSubmit={handleSubmit}
-              sx={{ background: "#111827", p: 2, borderRadius: 1 }}
-            >
-              {fields.map((field) => (
-                <TextField
-                  key={field.name}
-                  label={field.label}
-                  name={field.name}
-                  type={field.type === "area" ? "text" : field.type}
-                  fullWidth
-                  required
-                  value={(formData as any)[field.name]}
-                  onChange={handleChange}
-                  multiline={field.type === "area"}
-                  rows={field.type === "area" ? 4 : undefined}
-                  autoComplete={field.autoComplete}
-                  sx={{
-                    mb: 2,
-                    "& .MuiOutlinedInput-root": {
-                      "&:hover fieldset": { borderColor: "#9333ea" },
-                      "&.Mui-focused fieldset": { borderColor: "#a855f7" },
-                    },
-                    "& .MuiInputLabel-root.Mui-focused": { color: "#a855f7" },
-                  }}
-                />
-              ))}
-
-              <Stack direction="row" justifyContent="center">
-                <Button
-                  type="submit"
-                  variant="contained"
-                  disabled={isLoading}
-                  sx={{
-                    background: "var(--gradient)",
-                    color: "white",
-                    py: 1,
-                    px: 3,
-                    borderRadius: 999,
-                    "&:hover": { opacity: 0.9 },
-                  }}
-                >
-                  {isLoading ? "Sending..." : "Send message"}
-                </Button>
-              </Stack>
-            </Box>
-          </Paper>
+          <ContactForm
+            fields={fields}
+            formData={formData}
+            errors={errors}
+            isLoading={isLoading}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
         </Grid>
       </Grid>
 
-      <Snackbar
-        key={toast.msg}
-        open={toast.open}
-        autoHideDuration={2000}
-        onClose={() => setToast({ open: false })}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert
-          severity={toast.ok ? "success" : "error"}
-          variant="filled"
-          sx={{ color: "white" }}
-        >
-          {toast.msg}
-        </Alert>
-      </Snackbar>
+      <ToastModal handleCloseToast={handleCloseToast} {...toast} />
     </Container>
   );
 }

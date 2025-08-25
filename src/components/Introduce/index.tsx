@@ -1,5 +1,7 @@
-import { Avatar, Button, Container, Stack, Typography } from "@mui/material";
+import { Avatar, Container, Stack, Typography } from "@mui/material";
 import { resume } from "../../data";
+import ButtonComponent from "../Button";
+import TypographyComponent from "../TypographyComponent";
 
 const Introduce = () => {
   return (
@@ -18,19 +20,9 @@ const Introduce = () => {
           }}
         />
         <Stack spacing={1}>
-          <Typography
-            variant="h4"
-            fontWeight={700}
-            sx={{
-              background: "var(--gradient)",
-              backgroundClip: "text",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
+          <TypographyComponent variant="h4">
             Hello, I'm Anh khoa
-          </Typography>
+          </TypographyComponent>
 
           <Typography variant="h5" fontWeight={600}>
             Frontend Developer
@@ -39,23 +31,13 @@ const Introduce = () => {
           <Typography variant="body1">
             Focused on building clean, user-centered web applications.
           </Typography>
-          <Button
+          <ButtonComponent
             component="a"
             href={resume.href}
             download={resume.download}
-            sx={{
-              background: "var(--gradient)",
-              width: "fit-content",
-              color: "white",
-              px: 3,
-              py: 1,
-              "&:hover": {
-                opacity: 0.8,
-              },
-            }}
           >
             Download CV
-          </Button>
+          </ButtonComponent>
         </Stack>
       </Stack>
     </Container>

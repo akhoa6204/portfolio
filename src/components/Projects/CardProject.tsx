@@ -1,4 +1,5 @@
 import { Box, CardMedia, Typography, Button, Stack } from "@mui/material";
+import ButtonComponent from "../Button";
 interface IProps {
   name: string;
   description: string;
@@ -50,23 +51,7 @@ const CardProject = ({ name, description, image, github, web }: IProps) => {
         </Typography>
 
         <Stack direction="row" spacing={1.5} justifyContent={"center"}>
-          <Button
-            variant="contained"
-            href={web}
-            target="_blank"
-            sx={{
-              textTransform: "none",
-              borderRadius: 999,
-              px: 2.5,
-              background: "var(--gradient)",
-              "&:hover": {
-                opacity: 0.85,
-              },
-              color: "white",
-            }}
-          >
-            Live preview
-          </Button>
+          <ButtonComponent href={web}>Live preview</ButtonComponent>
           <Button
             variant="outlined"
             href={github}

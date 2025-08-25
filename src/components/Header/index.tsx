@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { navLinks, socials } from "../../data";
+import SocialIcon from "../SocialIcon";
 
 const Header = () => {
   return (
@@ -91,33 +92,7 @@ const Header = () => {
               }}
             >
               {socials.map((item) => (
-                <Tooltip
-                  title={item.label}
-                  arrow
-                  placement="bottom"
-                  key={item.label}
-                >
-                  <IconButton
-                    aria-label={`Open ${item.label}`}
-                    component="a"
-                    href={item.link}
-                    target="_blank"
-                    sx={{
-                      backgroundColor: item.color,
-                      color: "#fff",
-                      width: 40,
-                      height: 40,
-                      "& .MuiSvgIcon-root": {
-                        fontSize: 24,
-                      },
-                      "&:hover": {
-                        opacity: 0.9,
-                      },
-                    }}
-                  >
-                    {item.component}
-                  </IconButton>
-                </Tooltip>
+                <SocialIcon {...item} key={item.id} />
               ))}
             </Stack>
           </Stack>

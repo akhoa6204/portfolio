@@ -1,6 +1,6 @@
 # Portfolio
 
-![Portfolio Preview](/src/assets/images/portfolio.png)
+![Portfolio Preview](/src/assets/images/portfolio.jpg)
 
 My own personal portfolio website ✨  
 Inspired by **Dina Iakovenko**

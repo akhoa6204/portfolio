@@ -1,4 +1,4 @@
-import { Avatar, Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import { resume } from "../../data";
 import ButtonComponent from "../Button";
 import TypographyComponent from "../TypographyComponent";

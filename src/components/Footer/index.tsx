@@ -8,7 +8,7 @@ const Footer = () => {
     <Container sx={{ py: 2 }}>
       <Stack alignItems={"center"} mb={1}>
         <TypographyComponent textTransform={"uppercase"}>
-          Open to opportunities, ready for the next step.
+          Always learning, always building.
         </TypographyComponent>
       </Stack>
       <Stack

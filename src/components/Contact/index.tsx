@@ -54,24 +54,10 @@ const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
-const validateForm = (formData: FormData): Errors => {
-  const errors: Errors = {};
-  if (formData.name.trim().length < 2)
-    errors.name = "Name must be at least 2 characters";
-  if (!/^\S+@\S+\.\S+$/.test(formData.email))
-    errors.email = "Invalid email address";
-  if (formData.title.trim().length < 10)
-    errors.title = "Title must be at least 10 characters";
-  if (formData.message.trim().length < 10)
-    errors.message = "Message must be at least 10 characters";
-  return errors;
-};
-
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>(defaultData);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [toast, setToast] = useState<StateToast>({ open: false });
-  const [errors, setErrors] = useState<Errors>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -79,9 +65,6 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = validateForm(formData);
-    setErrors(result);
-    if (Object.keys(result).length > 0) return;
     setIsLoading(true);
     try {
       await emailjs.send(
@@ -128,7 +111,6 @@ export default function Contact() {
           <ContactForm
             fields={fields}
             formData={formData}
-            errors={errors}
             isLoading={isLoading}
             handleChange={handleChange}
             handleSubmit={handleSubmit}

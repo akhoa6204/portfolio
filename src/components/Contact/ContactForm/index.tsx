@@ -1,10 +1,9 @@
 import { Box, Paper, Stack, TextField } from "@mui/material";
-import type { Errors, Field, FormData } from "..";
+import type {  Field, FormData } from "..";
 import ButtonComponent from "../../Button";
 interface IContactInfo {
   fields: Field[];
   formData: FormData;
-  errors: Errors;
   isLoading: boolean;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleChange: (
@@ -14,7 +13,6 @@ interface IContactInfo {
 const ContactForm = ({
   fields,
   formData,
-  errors,
   isLoading,
   handleSubmit,
   handleChange,
@@ -28,7 +26,6 @@ const ContactForm = ({
         component="form"
         onSubmit={handleSubmit}
         sx={{ background: "#111827", p: 2, borderRadius: 1 }}
-        noValidate
       >
         {fields.map((field) => (
           <TextField
@@ -51,8 +48,6 @@ const ContactForm = ({
               },
               "& .MuiInputLabel-root.Mui-focused": { color: "#6978D1" },
             }}
-            error={!!errors[field.name]}
-            helperText={errors[field.name]}
           />
         ))}
 

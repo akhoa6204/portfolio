@@ -34,9 +34,9 @@ const Header = () => {
               slotProps={{
                 tooltip: {
                   sx: {
-                    bgcolor: "#8b5cf6",
+                    background: "var(--gradient)",
                     color: "white",
-                    fontSize: "0.9rem",
+                    fontSize: 14,
                     borderRadius: "12px",
                     boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
                     px: 2,
@@ -73,7 +73,29 @@ const Header = () => {
               {navLinks.map((item) => (
                 <Button
                   key={item.label}
-                  sx={{ color: "white", fontSize: { xs: 14, sm: 16 } }}
+                  sx={{
+                    position: "relative",
+                    color: "white",
+                    fontSize: { xs: 14, sm: 16 },
+                    "&::after": {
+                      position: "absolute",
+                      content: '""',
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      height: "3px",
+                      width: "100%",
+                      borderRadius: 1,
+                      background: "var(--gradient)",
+                      transform: "scaleX(0)",
+                      transformOrigin: "right",
+                      transition: "transform 0.3s ease-in-out",
+                    },
+                    "&:hover::after": {
+                      transform: "scaleX(1)",
+                      transformOrigin: "left",
+                    },
+                  }}
                   href={`#${item.path}`}
                   component="a"
                 >

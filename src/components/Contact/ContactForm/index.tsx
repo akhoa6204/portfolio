@@ -46,10 +46,10 @@ const ContactForm = ({
             sx={{
               mb: 2,
               "& .MuiOutlinedInput-root": {
-                "&:hover fieldset": { borderColor: "#9333ea" },
-                "&.Mui-focused fieldset": { borderColor: "#a855f7" },
+                "&:hover fieldset": { borderColor: "#6978D1" },
+                "&.Mui-focused fieldset": { borderColor: "#6978D1" },
               },
-              "& .MuiInputLabel-root.Mui-focused": { color: "#a855f7" },
+              "& .MuiInputLabel-root.Mui-focused": { color: "#6978D1" },
             }}
             error={!!errors[field.name]}
             helperText={errors[field.name]}

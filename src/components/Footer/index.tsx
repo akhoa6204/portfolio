@@ -1,23 +1,16 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import { socials } from "../../data";
 import SocialIcon from "../SocialIcon";
+import TypographyComponent from "../TypographyComponent";
 
 const Footer = () => {
   return (
     <Container sx={{ py: 2 }}>
-      <Typography
-        sx={{
-          textTransform: "uppercase",
-          textAlign: "center",
-          fontSize: { xs: 14, md: 16 },
-          background: "var(--gradient)",
-          backgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          mb: 1,
-        }}
-      >
-        Open to opportunities, ready for the next step.
-      </Typography>
+      <Stack alignItems={"center"} mb={1}>
+        <TypographyComponent textTransform={"uppercase"}>
+          Open to opportunities, ready for the next step.
+        </TypographyComponent>
+      </Stack>
       <Stack
         direction="row"
         alignItems="center"

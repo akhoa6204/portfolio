@@ -34,7 +34,7 @@ export const socials: ISocialInfo[] = [
 export const navLinks: INavLink[] = [
   {
     id: "about",
-    label: "About me",
+    label: "About",
     path: "about",
   },
   {

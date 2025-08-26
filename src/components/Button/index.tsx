@@ -14,8 +14,9 @@ const ButtonComponent = ({
       variant="contained"
       sx={{
         textTransform: "none",
-        borderRadius: 999,
-        px: 2.5,
+        borderRadius: 2,
+        px: 1,
+        py: 1.5,
         background: "var(--gradient)",
         boxShadow: "0px 10px 30px rgba(0, 178, 255, 0.35)",
         transition: "all 0.3s ease",
@@ -25,6 +26,7 @@ const ButtonComponent = ({
         },
         color: "white",
         width: "fit-content",
+        minWidth: 150,
       }}
       {...rest}
     >

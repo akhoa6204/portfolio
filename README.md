@@ -11,7 +11,7 @@ Inspired by **Dina Iakovenko**
 
 - **Framework**: [React.js](https://react.dev/) + [Vite](https://vitejs.dev/)
 - **Styling**: [MUI](https://mui.com/) + [TailwindCSS](https://tailwindcss.com/)
-- **Animations**: Framer Motion(https://www.framer.com/motion/?utm_source=chatgpt.com)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/?utm_source=chatgpt.com)
 - **Deployment**: [Vercel](https://vercel.com/)
 - **Other Libraries**:
   - [React Router DOM](https://reactrouter.com/)

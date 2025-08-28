@@ -52,21 +52,36 @@ const CardProject = ({ name, description, image, github, web }: IProps) => {
 
         <Stack direction="row" spacing={1.5} justifyContent={"center"}>
           <ButtonComponent href={web}>Live preview</ButtonComponent>
-          <Button
-            variant="outlined"
-            href={github}
-            target="_blank"
+          <Stack
+            direction={"row"}
+            justifyContent={"center"}
+            alignItems={"center"}
             sx={{
-              textTransform: "none",
+              background: "var(--gradient)",
               borderRadius: 999,
-              px: 2.5,
-              color: "white",
-              borderColor: "rgba(255,255,255,.5)",
-              "&:hover": { borderColor: "#8b5cf6" },
+              overflow: "hidden",
+              "&:hover": {
+                background: "var(--hover-gradient)",
+              },
+              p: 0.2,
             }}
           >
-            GitHub
-          </Button>
+            <Button
+              variant="outlined"
+              href={github}
+              target="_blank"
+              sx={{
+                textTransform: "none",
+                borderRadius: 999,
+                px: 3.5,
+                color: "white",
+                backgroundColor: "#0f172a",
+                height: "100%",
+              }}
+            >
+              GitHub
+            </Button>
+          </Stack>
         </Stack>
       </Box>
     </Box>

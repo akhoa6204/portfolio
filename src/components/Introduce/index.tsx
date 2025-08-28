@@ -1,8 +1,8 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import { resume } from "../../data";
-import ButtonComponent from "../Button";
-import TypographyComponent from "../TypographyComponent";
 import AvatarCircle from "./AvatarCircle";
+import Info from "./Info";
+import { motion } from "framer-motion";
 
 const Introduce = () => {
   return (
@@ -11,56 +11,30 @@ const Introduce = () => {
         direction={{ xs: "column", sm: "row" }}
         sx={{ position: "relative" }}
       >
-        <Box flex={1}>
-          <Box sx={{ zIndex: 2, position: { sm: "absolute" } }}>
-            <TypographyComponent>
-              <Typography
-                sx={{
-                  fontSize: { xs: 32, md: 48, lg: 64 },
-                  fontWeight: 600,
-                }}
-              >
-                Hello, I'm Anh Khoa
-              </Typography>
-            </TypographyComponent>
-
-            <Typography
-              sx={{
-                fontSize: { xs: 24, sm: 28, md: 44 },
-                fontWeight: 600,
-                mb: 3,
-              }}
-            >
-              Frontend Developer
-            </Typography>
-
-            <Typography
-              variant="body1"
-              sx={{ mb: { xs: 3, sm: 6 }, fontSize: 18, maxWidth: 500 }}
-            >
-              Frontend Developer passionate about crafting clean, responsive,
-              and user-focused web applications.
-            </Typography>
-
-            <ButtonComponent
-              component="a"
-              href={resume.href}
-              {...{ download: resume.download }}
-            >
-              Download CV
-            </ButtonComponent>
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            transform: {
-              xs: "translate(-300px, 50px)",
-              sm: "translate(-125px, 20px)",
-            },
-          }}
+        <motion.div
+          style={{ flex: 1 }}
+          initial={{ translateX: "-100%" }}
+          animate={{ translateX: "0" }}
+          transition={{ duration: 0.7 }}
         >
-          <AvatarCircle avatar={resume.avatar} />
-        </Box>
+          <Info resume={resume} />
+        </motion.div>
+        <motion.div
+          initial={{ translateX: "100%" }}
+          animate={{ translateX: "0" }}
+          transition={{ duration: 0.7 }}
+        >
+          <Box
+            sx={{
+              transform: {
+                xs: "translate(-300px, 50px)",
+                sm: "translate(-125px, 20px)",
+              },
+            }}
+          >
+            <AvatarCircle avatar={resume.avatar} />
+          </Box>
+        </motion.div>
       </Stack>
     </Container>
   );

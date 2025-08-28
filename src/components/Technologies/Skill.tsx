@@ -1,5 +1,6 @@
-import { Box, LinearProgress, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import type { ISkill } from "../../data/types";
+import { motion } from "framer-motion";
 
 const Skill = ({ name, level, percent }: ISkill) => {
   return (
@@ -10,18 +11,30 @@ const Skill = ({ name, level, percent }: ISkill) => {
           {level}
         </Typography>
       </Stack>
-      <LinearProgress
-        variant="determinate"
-        value={percent}
+
+      {/* background track */}
+      <Box
         sx={{
-          "& .MuiLinearProgress-bar": {
-            background: "var(--gradient)",
-          },
           height: 10,
           borderRadius: 2,
+          overflow: "hidden",
+          background: "#1e293b",
         }}
-      />
+      >
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${percent}%` }}
+          viewport={{ once: true, amount: 0.3 }} 
+          transition={{ duration: 1, ease: "easeOut" }}
+          style={{
+            height: "100%",
+            borderRadius: 2,
+            background: "var(--gradient)",
+          }}
+        />
+      </Box>
     </Box>
   );
 };
+
 export default Skill;

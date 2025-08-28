@@ -6,7 +6,7 @@ import HeadingSection from "../HeadingSection";
 import ToastModal from "./ToastModal";
 import ContactInfo from "./ContactInfo";
 import ContactForm from "./ContactForm";
-
+import { motion } from "framer-motion";
 export interface FormData {
   title: string;
   name: string;
@@ -104,17 +104,35 @@ export default function Contact() {
 
       <Grid container columnSpacing={2} rowSpacing={4}>
         <Grid size={{ xs: 12, md: 6 }}>
-          <ContactInfo contactInfos={contactInfos} />
+          <motion.div
+            initial={{ translateX: "-100%", opacity: 0 }}
+            whileInView={{ translateX: 0, opacity: 1 }}
+            viewport={{
+              once: true,
+            }}
+            transition={{ duration: 1 }}
+          >
+            <ContactInfo contactInfos={contactInfos} />
+          </motion.div>
         </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
-          <ContactForm
-            fields={fields}
-            formData={formData}
-            isLoading={isLoading}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
+          <motion.div
+            initial={{ translateX: "100%", opacity: 0 }}
+            whileInView={{ translateX: 0, opacity: 1 }}
+            viewport={{
+              once: true,
+            }}
+            transition={{ duration: 1 }}
+          >
+            <ContactForm
+              fields={fields}
+              formData={formData}
+              isLoading={isLoading}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+          </motion.div>
         </Grid>
       </Grid>
 

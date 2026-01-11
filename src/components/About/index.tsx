@@ -5,8 +5,8 @@ import HeadingSection from "../HeadingSection";
 
 const AboutMe = () => {
   return (
-    <Container sx={{ my: 3 }} id="about">
-      <HeadingSection>About me</HeadingSection>
+    <Container sx={{ my: 8 }} id="about">
+      <HeadingSection>Get to Know Me</HeadingSection>
 
       <Stack spacing={3} sx={{ position: "relative" }}>
         {timeLines.map((item, idx) => (

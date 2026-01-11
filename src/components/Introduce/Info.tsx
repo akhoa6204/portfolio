@@ -41,7 +41,7 @@ const Info = ({ resume }: { resume: IResume }) => {
           href={resume.href}
           {...{ download: resume.download }}
         >
-          Download CV
+          Check my CV
         </ButtonComponent>
       </Box>
     </>

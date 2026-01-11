@@ -51,7 +51,9 @@ const CardProject = ({ name, description, image, github, web }: IProps) => {
         </Typography>
 
         <Stack direction="row" spacing={1.5} justifyContent={"center"}>
-          <ButtonComponent href={web}>Live preview</ButtonComponent>
+          {web ? (
+            <ButtonComponent href={web}>Live preview</ButtonComponent>
+          ) : null}
           <Stack
             direction={"row"}
             justifyContent={"center"}

@@ -99,7 +99,7 @@ export default function Contact() {
   };
   const handleCloseToast = () => setToast({ open: false });
   return (
-    <Container id="contact" sx={{ mb: 3 }}>
+    <Container id="contact" sx={{ my: 8 }}>
       <HeadingSection>Contact me</HeadingSection>
 
       <Grid container columnSpacing={2} rowSpacing={4}>
